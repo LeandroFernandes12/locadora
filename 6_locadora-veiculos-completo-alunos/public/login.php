@@ -4,7 +4,7 @@ require_once __DIR__ . '/../config/config.php';
 
 session_start();
 
-use Service\Auth;
+use Services\Auth;
 
 $mensagem = '';
 $auth = new Auth();

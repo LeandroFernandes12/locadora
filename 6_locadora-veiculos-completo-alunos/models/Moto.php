@@ -1,6 +1,5 @@
-<!-- 3ª Digitação (Aqui) -->
 <?php
- namespace Models;
+namespace Models;
 
  /**
   * Classe que representa uma Moto no sistema
@@ -38,7 +37,7 @@
           */
           public function devolver(): string {
             if (!$this->disponivel) {
-                $this->dispoivel = true;
+                $this->disponivel = true;
                 return "Moto '{$this->modelo}' devolvida com sucesso!";
             }
             return "Moto '{$this->modelo}' já está na locadora."; 
