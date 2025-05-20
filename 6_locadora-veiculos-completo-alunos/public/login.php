@@ -2,11 +2,30 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../config/config.php';
 
+session_start();
 
-// 5ª Digitação (Aqui)
-// Obs: Apenas do PHP (Lógica)
+use Service\Auth;
 
+$mensagem = '';
+$auth = new Auth();
 
+// Se já estiver logado, redireciona para index
+if (Auth::verificarLogin()) {
+    header('Location: ../index.php');
+    exit;
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'] ?? '';
+    $password = $_POST['password'] ?? '';
+
+    if ($auth->login($username, $password)) {
+        header('Location: ../index.php');
+        exit;
+    } else{
+        $mensagem = 'Usuário ou senha inválidos';
+    }
+}
 ?>
 
 <!DOCTYPE html>
